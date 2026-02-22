@@ -33,37 +33,13 @@ npm run preview
 
 ## GitHub Pages へのデプロイ
 
+このリポジトリは `Astro` なので、GitHub Pages のデフォルト `Jekyll` ビルドではなく `GitHub Actions` デプロイを使います。
+
 1. リポジトリの **Settings → Pages** を開く。
-2. **Source**: Deploy from a branch
-3. **Branch**: `main`（または使用しているブランチ）、**Folder**: `/ (root)` のままにし、**Save**。
-4. デプロイ用にビルド成果物を `gh-pages` ブランチなどに push する方法が一般的です。
+2. **Source** を **GitHub Actions** に変更する。
+3. `main` ブランチに push すると、`.github/workflows/deploy-pages.yml` が `dist/` を Pages にデプロイします。
 
-### 手動デプロイ例（gh-pages ブランチ）
-
-```bash
-npm run build
-npx gh-pages -d dist
-```
-
-`gh-pages` パッケージを使う場合:
-
-```bash
-npm install -D gh-pages
-```
-
-`package.json` にスクリプトを追加する例:
-
-```json
-"scripts": {
-  "deploy": "npm run build && gh-pages -d dist"
-}
-```
-
-その後 `npm run deploy` でビルドと push が実行されます。
-
-### GitHub Actions でデプロイする場合
-
-**.github/workflows/deploy.yml** を作成し、`main` への push でビルドして `gh-pages` ブランチにデプロイするワークフローを組むこともできます。
+`Deploy from a branch` で `main` の `/ (root)` を指定すると、Jekyll が走って失敗する場合があります。
 
 ## 技術スタック
 
