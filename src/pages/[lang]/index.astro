@@ -13,192 +13,445 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params as { lang: Lang };
 const t = getTranslations(lang);
+const concepts = [
+	{ title: t.home.concept1, detail: t.home.concept1Detail },
+	{ title: t.home.concept2, detail: t.home.concept2Detail },
+	{ title: t.home.concept3, detail: t.home.concept3Detail },
+	{ title: t.home.concept4, detail: t.home.concept4Detail },
+];
+const features = [
+	{ title: t.home.closetTitle, detail: t.home.closetDesc },
+	{ title: t.home.coordinateTitle, detail: t.home.coordinateDesc },
+	{ title: t.home.maintenanceTitle, detail: t.home.maintenanceDesc },
+	{ title: t.home.ownersTitle, detail: t.home.ownersDesc },
+];
+const useCases = [
+	{ title: t.home.useCase1, detail: t.home.useCase1Detail },
+	{ title: t.home.useCase2, detail: t.home.useCase2Detail },
+	{ title: t.home.useCase3, detail: t.home.useCase3Detail },
+	{ title: t.home.useCase4, detail: t.home.useCase4Detail },
+];
 ---
 
 <Layout lang={lang} title={`${t.home.title} - ${t.home.tagline}`} description={t.home.description}>
 	<article class="home">
 		<section class="hero">
-			<img src={logoIcon.src} alt="" width="80" height="80" class="hero-icon" />
-			<h1 class="app-name">{t.home.title}</h1>
-			<p class="tagline">{t.home.tagline}</p>
-			<p class="lead">{t.home.description}</p>
+			<div class="hero-copy">
+				<p class="eyebrow">SMART WARDROBE APP</p>
+				<h1 class="app-name">{t.home.title}</h1>
+				<p class="tagline">{t.home.tagline}</p>
+				<p class="lead">{t.home.description}</p>
+				<div class="hero-actions">
+					<span class="chip chip-live">{t.home.ctaSoon}</span>
+					<span class="chip">{t.home.platformTitle}</span>
+				</div>
+			</div>
+			<div class="hero-panel" aria-hidden="true">
+				<div class="logo-wrap">
+					<img src={logoIcon.src} alt="" width="120" height="120" class="hero-icon" />
+				</div>
+				<div class="panel-lines">
+					<p>{t.home.concept1}</p>
+					<p>{t.home.concept2}</p>
+					<p>{t.home.concept3}</p>
+				</div>
+			</div>
 		</section>
 
-		<section class="section">
-			<h2>{t.home.conceptTitle}</h2>
-			<ul class="concept-list">
-				<li>
-					<strong>{t.home.concept1}</strong>
-					<p>{t.home.concept1Detail}</p>
-				</li>
-				<li>
-					<strong>{t.home.concept2}</strong>
-					<p>{t.home.concept2Detail}</p>
-				</li>
-				<li>
-					<strong>{t.home.concept3}</strong>
-					<p>{t.home.concept3Detail}</p>
-				</li>
-				<li>
-					<strong>{t.home.concept4}</strong>
-					<p>{t.home.concept4Detail}</p>
-				</li>
+		<section class="section section-soft">
+			<div class="section-head">
+				<h2>{t.home.conceptTitle}</h2>
+			</div>
+			<ul class="concept-grid">
+				{
+					concepts.map((item) => (
+						<li>
+							<strong>{item.title}</strong>
+							<p>{item.detail}</p>
+						</li>
+					))
+				}
 			</ul>
 		</section>
 
 		<section class="section">
-			<h2>{t.home.featuresTitle}</h2>
+			<div class="section-head">
+				<h2>{t.home.featuresTitle}</h2>
+			</div>
 			<ul class="feature-grid">
-				<li>
-					<h3>{t.home.closetTitle}</h3>
-					<p>{t.home.closetDesc}</p>
-				</li>
-				<li>
-					<h3>{t.home.coordinateTitle}</h3>
-					<p>{t.home.coordinateDesc}</p>
-				</li>
-				<li>
-					<h3>{t.home.maintenanceTitle}</h3>
-					<p>{t.home.maintenanceDesc}</p>
-				</li>
-				<li>
-					<h3>{t.home.ownersTitle}</h3>
-					<p>{t.home.ownersDesc}</p>
-				</li>
+				{
+					features.map((item) => (
+						<li>
+							<h3>{item.title}</h3>
+							<p>{item.detail}</p>
+						</li>
+					))
+				}
 			</ul>
 		</section>
 
 		<section class="section">
-			<h2>{t.home.useCasesTitle}</h2>
+			<div class="section-head">
+				<h2>{t.home.useCasesTitle}</h2>
+			</div>
 			<ul class="use-case-list">
-				<li><strong>{t.home.useCase1}</strong> — {t.home.useCase1Detail}</li>
-				<li><strong>{t.home.useCase2}</strong> — {t.home.useCase2Detail}</li>
-				<li><strong>{t.home.useCase3}</strong> — {t.home.useCase3Detail}</li>
-				<li><strong>{t.home.useCase4}</strong> — {t.home.useCase4Detail}</li>
+				{
+					useCases.map((item) => (
+						<li>
+							<div class="use-case-body">
+								<strong>{item.title}</strong>
+								<p>{item.detail}</p>
+							</div>
+						</li>
+					))
+				}
 			</ul>
-		</section>
-
-		<section class="section platform">
-			<h2>{t.home.platformTitle}</h2>
-			<p>{t.home.platformDesc}</p>
 		</section>
 
 		<section class="cta">
-			<p class="cta-soon">{t.home.ctaSoon}</p>
-			<p class="cta-label">{t.home.cta}</p>
+			<div>
+				<p class="cta-soon">{t.home.ctaSoon}</p>
+				<p class="cta-label">{t.home.cta}</p>
+			</div>
+			<p class="cta-platform">
+				<strong>{t.home.platformTitle}</strong>
+				<span>{t.home.platformDesc}</span>
+			</p>
 		</section>
 	</article>
 </Layout>
 
 <style>
 	.home {
-		max-width: 720px;
+		--bg: #f5f7f8;
+		--surface: #ffffff;
+		--surface-alt: #eff4f6;
+		--text: #1a2b33;
+		--muted: #5d7280;
+		--line: #d7e1e6;
+		--accent: #0b7a75;
+		--accent-2: #11a3a4;
+		--shadow: 0 16px 44px rgba(17, 32, 45, 0.08);
+		max-width: 1080px;
 		margin: 0 auto;
-		padding: 2rem 1rem 3rem;
+		padding: 2.2rem 1rem 4rem;
+		color: var(--text);
 	}
 	.hero {
-		text-align: center;
-		margin-bottom: 3rem;
+		position: relative;
+		display: grid;
+		grid-template-columns: 1.3fr 1fr;
+		gap: 1.25rem;
+		margin-bottom: 2rem;
+		padding: 1.25rem;
+		border-radius: 26px;
+		background:
+			radial-gradient(circle at 12% 22%, rgba(17, 163, 164, 0.2), rgba(17, 163, 164, 0)),
+			radial-gradient(circle at 80% 0%, rgba(11, 122, 117, 0.22), rgba(11, 122, 117, 0)),
+			var(--bg);
+		border: 1px solid var(--line);
+		box-shadow: var(--shadow);
+		overflow: hidden;
+		animation: reveal 700ms ease-out both;
+	}
+	.hero::after {
+		content: '';
+		position: absolute;
+		inset: auto -80px -80px auto;
+		width: 240px;
+		height: 240px;
+		background: linear-gradient(135deg, rgba(17, 163, 164, 0.16), rgba(11, 122, 117, 0.06));
+		border-radius: 50%;
+		filter: blur(1px);
+		pointer-events: none;
+	}
+	.hero-copy {
+		padding: 0.5rem 0.25rem 0.25rem;
+	}
+	.eyebrow {
+		margin: 0 0 0.65rem;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.16em;
+		color: var(--accent);
 	}
 	.hero-icon {
 		display: block;
-		width: 5rem;
-		height: 5rem;
-		margin: 0 auto 1rem;
-	}
-	.app-name {
-		font-size: 2.5rem;
-		font-weight: 700;
-		margin: 0 0 0.5rem;
-		letter-spacing: -0.02em;
-	}
-	.tagline {
-		font-size: 1.25rem;
-		color: #444;
-		margin: 0 0 1rem;
-	}
-	.lead {
-		font-size: 1rem;
-		color: #555;
-		line-height: 1.7;
+		width: 7rem;
+		height: 7rem;
 		margin: 0;
 	}
-	.section {
-		margin-bottom: 2.5rem;
+	.app-name {
+		font-size: clamp(2rem, 3.8vw, 3rem);
+		font-weight: 800;
+		margin: 0 0 0.4rem;
+		letter-spacing: -0.02em;
+		line-height: 1.04;
 	}
-	.section h2 {
-		font-size: 1.35rem;
+	.tagline {
+		font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+		color: #26414d;
+		margin: 0 0 0.75rem;
+		font-weight: 600;
+	}
+	.lead {
+		max-width: 58ch;
+		font-size: 0.98rem;
+		color: var(--muted);
+		line-height: 1.72;
 		margin: 0 0 1rem;
-		color: #1a1a1a;
-		border-bottom: 2px solid #eee;
-		padding-bottom: 0.35rem;
+	}
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	.chip {
+		padding: 0.36rem 0.75rem;
+		border-radius: 999px;
+		background: #e2ecef;
+		font-size: 0.8rem;
+		font-weight: 600;
+		color: #315261;
+	}
+	.chip-live {
+		background: linear-gradient(90deg, var(--accent), var(--accent-2));
+		color: #fff;
+	}
+	.hero-panel {
+		display: grid;
+		align-content: space-between;
+		gap: 1rem;
+		padding: 1rem;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: 18px;
+	}
+	.logo-wrap {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: 136px;
+		height: 136px;
+		border-radius: 18px;
+		background: linear-gradient(150deg, #ecf5f6, #ffffff);
+		border: 1px solid var(--line);
+	}
+	.panel-lines {
+		display: grid;
+		gap: 0.45rem;
+	}
+	.panel-lines p {
+		margin: 0;
+		padding: 0.5rem 0.65rem;
+		background: var(--surface-alt);
+		border-radius: 10px;
+		font-size: 0.84rem;
+		color: #335766;
+		font-weight: 500;
+	}
+	.section {
+		margin-bottom: 1.15rem;
+		padding: 1.25rem;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: 22px;
+		box-shadow: 0 6px 18px rgba(23, 37, 44, 0.04);
+		animation: reveal 850ms ease-out both;
+	}
+	.section-soft {
+		background: var(--bg);
+	}
+	.section-head {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+	.section-head h2 {
+		font-size: 1.2rem;
+		margin: 0;
+		color: var(--text);
+		letter-spacing: -0.01em;
+	}
+	.section-head p {
+		margin: 0;
+		font-size: 0.85rem;
+		color: var(--muted);
+		text-align: right;
 	}
 	.section h3 {
-		font-size: 1.05rem;
+		font-size: 1.02rem;
 		margin: 0 0 0.35rem;
+		line-height: 1.35;
 	}
-	.concept-list,
-	.use-case-list {
+	.concept-grid,
+	.use-case-list,
+	.feature-grid {
 		list-style: none;
 		padding: 0;
 		margin: 0;
 	}
-	.concept-list li {
-		margin-bottom: 1.25rem;
+	.concept-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.8rem;
 	}
-	.concept-list li strong {
+	.concept-grid li {
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: 14px;
+		padding: 0.8rem 0.85rem;
+	}
+	.concept-grid li strong {
 		display: block;
-		margin-bottom: 0.25rem;
-	}
-	.concept-list li p {
-		margin: 0;
-		color: #555;
+		margin-bottom: 0.3rem;
 		font-size: 0.95rem;
+	}
+	.concept-grid li p {
+		margin: 0;
+		color: var(--muted);
+		font-size: 0.88rem;
+		line-height: 1.6;
 	}
 	.feature-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-		gap: 1.25rem;
-		list-style: none;
-		padding: 0;
-		margin: 0;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.8rem;
 	}
 	.feature-grid li {
-		padding: 1rem;
-		background: #f9f9f9;
-		border-radius: 8px;
-		border: 1px solid #eee;
+		padding: 0.9rem 0.95rem;
+		background: linear-gradient(180deg, #ffffff, #f7fbfc);
+		border-radius: 14px;
+		border: 1px solid var(--line);
 	}
 	.feature-grid li p {
 		margin: 0;
-		font-size: 0.9rem;
-		color: #555;
-		line-height: 1.5;
+		font-size: 0.88rem;
+		color: var(--muted);
+		line-height: 1.58;
+	}
+	.use-case-list {
+		display: grid;
+		gap: 0.65rem;
 	}
 	.use-case-list li {
-		margin-bottom: 0.75rem;
-		font-size: 0.95rem;
-		color: #555;
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.8rem;
+		align-items: flex-start;
+		padding: 0.7rem 0.8rem;
+		border-radius: 12px;
+		background: var(--surface-alt);
+		border: 1px solid #dde8ed;
 	}
-	.platform p {
+	.use-case-list li::before {
+		content: '';
+		margin-top: 0.42rem;
+		width: 9px;
+		height: 9px;
+		border-radius: 999px;
+		background: linear-gradient(150deg, var(--accent), var(--accent-2));
+	}
+	.use-case-list li strong {
+		display: block;
+		margin-bottom: 0.12rem;
+		font-size: 0.92rem;
+	}
+	.use-case-list li p {
 		margin: 0;
-		color: #555;
+		font-size: 0.88rem;
+		line-height: 1.58;
+		color: var(--muted);
+	}
+	.use-case-body {
+		display: block;
 	}
 	.cta {
-		text-align: center;
-		padding: 2rem;
-		background: #f5f5f5;
-		border-radius: 12px;
-		margin-top: 2rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 1.15rem 1.2rem;
+		background: linear-gradient(130deg, #0f7f7a, #189594);
+		border-radius: 18px;
+		margin-top: 1.6rem;
+		color: #fff;
+		box-shadow: 0 14px 34px rgba(11, 122, 117, 0.28);
+		animation: reveal 1s ease-out both;
 	}
 	.cta-soon {
 		font-weight: 600;
-		font-size: 1.1rem;
-		margin: 0 0 0.25rem;
+		font-size: 0.85rem;
+		opacity: 0.84;
+		margin: 0 0 0.18rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
 	}
 	.cta-label {
 		margin: 0;
-		font-size: 0.9rem;
-		color: #666;
+		font-size: 1.05rem;
+		font-weight: 700;
+		line-height: 1.3;
+	}
+	.cta-platform {
+		margin: 0;
+		display: grid;
+		gap: 0.2rem;
+		text-align: right;
+	}
+	.cta-platform strong {
+		font-size: 0.92rem;
+		font-weight: 700;
+	}
+	.cta-platform span {
+		font-size: 0.78rem;
+		opacity: 0.9;
+		max-width: 28ch;
+	}
+	@keyframes reveal {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	@media (max-width: 900px) {
+		.hero {
+			grid-template-columns: 1fr;
+		}
+		.hero-panel {
+			grid-template-columns: 1fr;
+		}
+		.logo-wrap {
+			width: 116px;
+			height: 116px;
+		}
+		.concept-grid,
+		.feature-grid {
+			grid-template-columns: 1fr;
+		}
+		.cta {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+		.cta-platform {
+			text-align: left;
+		}
+	}
+	@media (max-width: 560px) {
+		.home {
+			padding: 1.4rem 0.75rem 3rem;
+		}
+		.hero,
+		.section,
+		.cta {
+			border-radius: 16px;
+			padding: 0.95rem;
+		}
 	}
 </style>
