@@ -1,0 +1,204 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getTranslations } from '../../i18n/translations';
+import type { Lang } from '../../i18n/config';
+import logoIcon from '../../assets/cloze.svg';
+
+export function getStaticPaths() {
+	return [
+		{ params: { lang: 'en' } },
+		{ params: { lang: 'ja' } },
+	];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = getTranslations(lang);
+---
+
+<Layout lang={lang} title={`${t.home.title} - ${t.home.tagline}`} description={t.home.description}>
+	<article class="home">
+		<section class="hero">
+			<img src={logoIcon.src} alt="" width="80" height="80" class="hero-icon" />
+			<h1 class="app-name">{t.home.title}</h1>
+			<p class="tagline">{t.home.tagline}</p>
+			<p class="lead">{t.home.description}</p>
+		</section>
+
+		<section class="section">
+			<h2>{t.home.conceptTitle}</h2>
+			<ul class="concept-list">
+				<li>
+					<strong>{t.home.concept1}</strong>
+					<p>{t.home.concept1Detail}</p>
+				</li>
+				<li>
+					<strong>{t.home.concept2}</strong>
+					<p>{t.home.concept2Detail}</p>
+				</li>
+				<li>
+					<strong>{t.home.concept3}</strong>
+					<p>{t.home.concept3Detail}</p>
+				</li>
+				<li>
+					<strong>{t.home.concept4}</strong>
+					<p>{t.home.concept4Detail}</p>
+				</li>
+			</ul>
+		</section>
+
+		<section class="section">
+			<h2>{t.home.featuresTitle}</h2>
+			<ul class="feature-grid">
+				<li>
+					<h3>{t.home.closetTitle}</h3>
+					<p>{t.home.closetDesc}</p>
+				</li>
+				<li>
+					<h3>{t.home.coordinateTitle}</h3>
+					<p>{t.home.coordinateDesc}</p>
+				</li>
+				<li>
+					<h3>{t.home.maintenanceTitle}</h3>
+					<p>{t.home.maintenanceDesc}</p>
+				</li>
+				<li>
+					<h3>{t.home.ownersTitle}</h3>
+					<p>{t.home.ownersDesc}</p>
+				</li>
+			</ul>
+		</section>
+
+		<section class="section">
+			<h2>{t.home.useCasesTitle}</h2>
+			<ul class="use-case-list">
+				<li><strong>{t.home.useCase1}</strong> — {t.home.useCase1Detail}</li>
+				<li><strong>{t.home.useCase2}</strong> — {t.home.useCase2Detail}</li>
+				<li><strong>{t.home.useCase3}</strong> — {t.home.useCase3Detail}</li>
+				<li><strong>{t.home.useCase4}</strong> — {t.home.useCase4Detail}</li>
+			</ul>
+		</section>
+
+		<section class="section platform">
+			<h2>{t.home.platformTitle}</h2>
+			<p>{t.home.platformDesc}</p>
+		</section>
+
+		<section class="cta">
+			<p class="cta-soon">{t.home.ctaSoon}</p>
+			<p class="cta-label">{t.home.cta}</p>
+		</section>
+	</article>
+</Layout>
+
+<style>
+	.home {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: 2rem 1rem 3rem;
+	}
+	.hero {
+		text-align: center;
+		margin-bottom: 3rem;
+	}
+	.hero-icon {
+		display: block;
+		width: 5rem;
+		height: 5rem;
+		margin: 0 auto 1rem;
+	}
+	.app-name {
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin: 0 0 0.5rem;
+		letter-spacing: -0.02em;
+	}
+	.tagline {
+		font-size: 1.25rem;
+		color: #444;
+		margin: 0 0 1rem;
+	}
+	.lead {
+		font-size: 1rem;
+		color: #555;
+		line-height: 1.7;
+		margin: 0;
+	}
+	.section {
+		margin-bottom: 2.5rem;
+	}
+	.section h2 {
+		font-size: 1.35rem;
+		margin: 0 0 1rem;
+		color: #1a1a1a;
+		border-bottom: 2px solid #eee;
+		padding-bottom: 0.35rem;
+	}
+	.section h3 {
+		font-size: 1.05rem;
+		margin: 0 0 0.35rem;
+	}
+	.concept-list,
+	.use-case-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.concept-list li {
+		margin-bottom: 1.25rem;
+	}
+	.concept-list li strong {
+		display: block;
+		margin-bottom: 0.25rem;
+	}
+	.concept-list li p {
+		margin: 0;
+		color: #555;
+		font-size: 0.95rem;
+	}
+	.feature-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+		gap: 1.25rem;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.feature-grid li {
+		padding: 1rem;
+		background: #f9f9f9;
+		border-radius: 8px;
+		border: 1px solid #eee;
+	}
+	.feature-grid li p {
+		margin: 0;
+		font-size: 0.9rem;
+		color: #555;
+		line-height: 1.5;
+	}
+	.use-case-list li {
+		margin-bottom: 0.75rem;
+		font-size: 0.95rem;
+		color: #555;
+	}
+	.platform p {
+		margin: 0;
+		color: #555;
+	}
+	.cta {
+		text-align: center;
+		padding: 2rem;
+		background: #f5f5f5;
+		border-radius: 12px;
+		margin-top: 2rem;
+	}
+	.cta-soon {
+		font-weight: 600;
+		font-size: 1.1rem;
+		margin: 0 0 0.25rem;
+	}
+	.cta-label {
+		margin: 0;
+		font-size: 0.9rem;
+		color: #666;
+	}
+</style>

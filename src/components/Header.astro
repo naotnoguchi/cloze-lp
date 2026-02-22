@@ -1,0 +1,101 @@
+---
+import { getTranslations } from '../i18n/translations';
+import type { Lang } from '../i18n/config';
+import logoIcon from '../assets/cloze.svg';
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+const base = import.meta.env.BASE_URL;
+
+// 現在のページパス（言語セグメント除く）を取得し、言語切替先URLを同じページに
+const pathname = Astro.url.pathname;
+const pathAfterBase = pathname.startsWith(base) ? pathname.slice(base.length) : pathname.replace(/^\//, '');
+const segments = pathAfterBase.split('/').filter(Boolean);
+const pagePath = segments.slice(1).join('/'); // 例: '' | 'terms' | 'privacy'
+const otherLang = lang === 'ja' ? 'en' : 'ja';
+const switchHref = base + otherLang + (pagePath ? '/' + pagePath + '/' : '/');
+---
+
+<header class="header">
+	<div class="inner">
+		<a href={base + lang + '/'} class="logo">
+			<img src={logoIcon.src} alt="" width="24" height="24" class="logo-icon" />
+			<span>CLOZE</span>
+		</a>
+		<nav class="nav" aria-label="Language">
+			<span class="lang">
+				{lang === 'ja' ? (
+					<>
+						<span class="current">日本語</span>
+						<a href={switchHref} aria-current={undefined}>English</a>
+					</>
+				) : (
+					<>
+						<span class="current">English</span>
+						<a href={switchHref} aria-current={undefined}>日本語</a>
+					</>
+				)}
+			</span>
+		</nav>
+	</div>
+</header>
+
+<style>
+	.header {
+		border-bottom: 1px solid #e5e5e5;
+		background: #fff;
+	}
+	.inner {
+		max-width: 960px;
+		margin: 0 auto;
+		padding: 0.75rem 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+	.logo {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-weight: 700;
+		font-size: 1.25rem;
+		color: #1a1a1a;
+		text-decoration: none;
+	}
+	.logo:hover {
+		text-decoration: underline;
+	}
+	.logo-icon {
+		width: 1.5em;
+		height: 1.5em;
+		flex-shrink: 0;
+	}
+	.nav {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		flex-wrap: wrap;
+	}
+	.nav a {
+		color: #444;
+		text-decoration: none;
+		font-size: 0.9rem;
+	}
+	.nav a:hover {
+		text-decoration: underline;
+	}
+	.lang {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.85rem;
+		color: #666;
+	}
+	.lang .current {
+		font-weight: 500;
+	}
+	.lang a {
+		color: #444;
+	}
+</style>

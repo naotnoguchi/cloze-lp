@@ -1,0 +1,63 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTranslations } from '../../../i18n/translations';
+import type { Lang } from '../../../i18n/config';
+
+export function getStaticPaths() {
+	return [
+		{ params: { lang: 'en' } },
+		{ params: { lang: 'ja' } },
+	];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = getTranslations(lang);
+const datePlaceholder = '[DATE_PLACEHOLDER]';
+const lastUpdated = t.privacy.lastUpdated.replace(datePlaceholder, '—');
+---
+
+<Layout lang={lang} title={t.privacy.title} description="">
+	<article class="legal">
+		<h1>{t.privacy.title}</h1>
+		<p class="updated">{lastUpdated}</p>
+		<div class="body">
+			{t.privacy.sections.map((section) => (
+				<section>
+					<h2>{section.title}</h2>
+					<p>{section.body}</p>
+				</section>
+			))}
+		</div>
+	</article>
+</Layout>
+
+<style>
+	.legal {
+		max-width: 640px;
+		margin: 0 auto;
+		padding: 2rem 1rem 3rem;
+	}
+	.legal h1 {
+		font-size: 1.75rem;
+		margin: 0 0 0.5rem;
+	}
+	.updated {
+		font-size: 0.9rem;
+		color: #666;
+		margin: 0 0 2rem;
+	}
+	.body section {
+		margin-bottom: 1.5rem;
+	}
+	.body h2 {
+		font-size: 1.1rem;
+		margin: 0 0 0.5rem;
+		color: #333;
+	}
+	.body p {
+		margin: 0;
+		color: #555;
+		font-size: 0.95rem;
+		line-height: 1.65;
+	}
+</style>
