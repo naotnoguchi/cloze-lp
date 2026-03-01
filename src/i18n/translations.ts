@@ -131,23 +131,27 @@ const en: Translations = {
 				body: 'You are responsible for your own use of the App and for maintaining backups of important data where necessary. You must comply with applicable laws and must not use the App for unlawful or abusive purposes.',
 			},
 			{
-				title: '6. Intellectual Property Rights',
+				title: '6. Operational Logs and Diagnostics',
+				body: 'To improve app quality and stability, we may collect usage analytics and crash diagnostics via third-party tools such as Firebase Analytics and Firebase Crashlytics. Details are described in the Privacy Policy.',
+			},
+			{
+				title: '7. Intellectual Property Rights',
 				body: 'All rights, title, and interest in and to the App, including software, design, trademarks, and related content, belong to us or our licensors. You retain rights to content you create in the App, but you grant us only the limited rights necessary to operate and provide the App where applicable.',
 			},
 			{
-				title: '7. Disclaimer and Limitation of Liability',
+				title: '8. Disclaimer and Limitation of Liability',
 				body: 'The App is provided on an "as is" and "as available" basis without warranties of any kind to the extent permitted by law. We are not liable for data loss, data corruption, interruption, suspension, or termination of the App, or for indirect, incidental, special, or consequential damages arising from use of the App, except where liability cannot be excluded under applicable law.',
 			},
 			{
-				title: '8. Changes to the App and Terms',
+				title: '9. Changes to the App and Terms',
 				body: 'We may revise these Terms and may change, suspend, or discontinue all or part of the App at any time. Your continued use of the App after revised Terms become effective constitutes acceptance of those revised Terms.',
 			},
 			{
-				title: '9. Governing Law and Jurisdiction',
+				title: '10. Governing Law and Jurisdiction',
 				body: 'These Terms are governed by the laws of Japan. Any dispute arising out of or in connection with these Terms or the App shall be subject to the exclusive jurisdiction of the court having jurisdiction over our principal place of business in Japan, unless otherwise required by applicable law.',
 			},
 			{
-				title: '10. Contact',
+				title: '11. Contact',
 				body: 'For questions regarding these Terms, please contact us at: https://forms.gle/xUhdsWLCTaEx7F9o9',
 			},
 		],
@@ -178,26 +182,34 @@ const en: Translations = {
 			},
 			{
 				title: '6. Third Parties and Data Sharing',
-				body: 'We do not sell your personal information. We do not provide your wardrobe content to advertisers. Data may be processed by Apple (e.g., iCloud and App Store billing) and by RevenueCat solely for subscription management.',
+				body: 'We do not sell your personal information. We do not provide your wardrobe content to advertisers. Data may be processed by Apple (e.g., iCloud and App Store billing), by RevenueCat for subscription management, and by Google Firebase (Firebase Analytics / Firebase Crashlytics) for analytics and crash diagnostics.',
 			},
 			{
-				title: '7. Data Retention and Deletion',
+				title: '7. Analytics and Crash Diagnostics',
+				body: 'We use Firebase Analytics to understand general app usage trends and Firebase Crashlytics to detect and fix crashes. These services may process technical information such as device identifiers, app events, crash logs, OS version, device model, and approximate usage timestamps. We use this information for quality improvement, not for selling your personal data.',
+			},
+			{
+				title: '8. Data Retention and Deletion',
 				body: 'Data remains on your device and, if enabled, in your iCloud account until you delete it. You can delete app data by removing records in the App or uninstalling the App and removing related iCloud data from your Apple account settings.',
 			},
 			{
-				title: '8. Security',
+				title: '9. Your Choices',
+				body: 'Depending on your device settings, you may limit analytics collection (for example through iOS privacy or analytics settings). Crash reports may still be processed as needed for service stability where applicable.',
+			},
+			{
+				title: '10. Security',
 				body: 'We take reasonable measures in app design to reduce unauthorized access risk. However, no method of electronic storage or transmission is completely secure.',
 			},
 			{
-				title: '9. Children',
+				title: '11. Children',
 				body: 'The App is not directed to children under the age defined by applicable law in your jurisdiction without parental involvement. If you believe data was provided inappropriately, contact us.',
 			},
 			{
-				title: '10. Changes to This Policy',
+				title: '12. Changes to This Policy',
 				body: 'We may update this Privacy Policy. The revised version becomes effective when posted in the App or on the website with an updated date.',
 			},
 			{
-				title: '11. Contact',
+				title: '13. Contact',
 				body: 'For privacy inquiries, contact us at: https://forms.gle/xUhdsWLCTaEx7F9o9',
 			},
 		],
@@ -282,23 +294,27 @@ const ja: Translations = {
 				body: 'ユーザーは、自己の責任において本アプリを利用するものとし、必要に応じて重要なデータのバックアップを行うものとします。ユーザーは、法令または公序良俗に反する目的で本アプリを利用してはなりません。',
 			},
 			{
-				title: '第6条（知的財産権）',
+				title: '第6条（運用ログおよび障害解析）',
+				body: '当方は、本アプリの品質向上および安定運用のため、Firebase Analytics および Firebase Crashlytics 等の第三者ツールを利用して利用状況分析およびクラッシュ情報を取得する場合があります。詳細はプライバシーポリシーに定めます。',
+			},
+			{
+				title: '第7条（知的財産権）',
 				body: '本アプリに関する著作権、商標権、その他一切の知的財産権は、当方または正当な権利者に帰属します。ユーザーが本アプリ内で作成したデータの権利はユーザーに帰属しますが、サービス提供に必要な範囲で当方に利用権を許諾するものとします。',
 			},
 			{
-				title: '第7条（免責および責任制限）',
+				title: '第8条（免責および責任制限）',
 				body: '本アプリは「現状有姿」かつ「提供可能な範囲」で提供され、法令上許容される範囲で、明示または黙示を問わずいかなる保証も行いません。当方は、データ消失・毀損、サービス停止・中断・終了、または本アプリ利用に起因する間接損害、特別損害、結果的損害について責任を負いません。ただし、法令により免責が認められない場合を除きます。',
 			},
 			{
-				title: '第8条（サービス内容および規約の変更）',
+				title: '第9条（サービス内容および規約の変更）',
 				body: '当方は、必要に応じて本アプリの内容を変更し、または提供を中断・終了することがあります。また、本規約を改定することがあります。改定後に本アプリを利用した場合、ユーザーは改定後の規約に同意したものとみなされます。',
 			},
 			{
-				title: '第9条（準拠法および裁判管轄）',
+				title: '第10条（準拠法および裁判管轄）',
 				body: '本規約は日本法に準拠し、本規約または本アプリに関連して生じた紛争については、当方の主たる事業所所在地を管轄する日本の裁判所を第一審の専属的合意管轄裁判所とします。法令に別段の定めがある場合はこの限りではありません。',
 			},
 			{
-				title: '第10条（お問い合わせ）',
+				title: '第11条（お問い合わせ）',
 				body: '本規約に関するお問い合わせ先：https://forms.gle/xUhdsWLCTaEx7F9o9',
 			},
 		],
@@ -329,26 +345,34 @@ const ja: Translations = {
 			},
 			{
 				title: '6. 第三者提供および共有',
-				body: '当方は、ユーザーの個人情報を販売しません。広告目的でクローゼットデータを第三者提供しません。Apple（iCloud、App Store決済等）および RevenueCat には、サービス提供に必要な範囲で情報が処理される場合があります。',
+				body: '当方は、ユーザーの個人情報を販売しません。広告目的でクローゼットデータを第三者提供しません。Apple（iCloud、App Store決済等）、RevenueCat（購読管理）および Google Firebase（Firebase Analytics / Firebase Crashlytics）には、サービス提供・品質改善に必要な範囲で情報が処理される場合があります。',
 			},
 			{
-				title: '7. 保存期間と削除',
+				title: '7. 分析情報およびクラッシュ情報',
+				body: '当方は、Firebase Analytics を用いて利用傾向を把握し、Firebase Crashlytics を用いて障害の検知・修正を行います。これらのサービスでは、端末識別子、アプリ内イベント、クラッシュログ、OSバージョン、端末モデル、利用時刻等の技術情報が処理される場合があります。取得した情報は、品質向上の目的で利用し、個人情報の販売には利用しません。',
+			},
+			{
+				title: '8. 保存期間と削除',
 				body: 'データは、ユーザーが削除するまで端末内および（有効な場合）iCloud 上に保持されます。アプリ内での削除操作、またはアプリ削除と Apple アカウント設定での iCloud データ削除により消去できます。',
 			},
 			{
-				title: '8. 安全管理',
+				title: '9. ユーザーの選択',
+				body: 'ユーザーは、端末のプライバシー設定や解析設定により、一定の分析情報収集を制限できる場合があります。なお、サービス安定性確保のため、必要に応じてクラッシュ情報が処理される場合があります。',
+			},
+			{
+				title: '10. 安全管理',
 				body: '当方は、情報への不正アクセス等を防止するために合理的な安全管理措置を講じます。ただし、電子的保存・通信手段において完全な安全性を保証するものではありません。',
 			},
 			{
-				title: '9. 未成年者の利用',
+				title: '11. 未成年者の利用',
 				body: '本アプリは、法令で定める年齢未満の方による保護者関与のない利用を想定していません。不適切な情報提供があったと考えられる場合はご連絡ください。',
 			},
 			{
-				title: '10. 本ポリシーの変更',
+				title: '12. 本ポリシーの変更',
 				body: '当方は、本ポリシーを改定する場合があります。改定後の内容は、本アプリまたはウェブサイトに掲載した時点（または別途定める時点）で効力を生じます。',
 			},
 			{
-				title: '11. お問い合わせ',
+				title: '13. お問い合わせ',
 				body: 'プライバシーに関するお問い合わせ先：https://forms.gle/xUhdsWLCTaEx7F9o9',
 			},
 		],
