@@ -108,7 +108,7 @@ const en: Translations = {
 	},
 	terms: {
 		title: 'Terms of Use',
-		lastUpdated: 'Last updated: [DATE_PLACEHOLDER]',
+		lastUpdated: 'Last updated: March 7, 2026',
 		sections: [
 			{
 				title: '1. Scope and Acceptance',
@@ -158,7 +158,7 @@ const en: Translations = {
 	},
 	privacy: {
 		title: 'Privacy Policy',
-		lastUpdated: 'Last updated: [DATE_PLACEHOLDER]',
+		lastUpdated: 'Last updated: March 7, 2026',
 		sections: [
 			{
 				title: '1. Scope',
@@ -271,7 +271,7 @@ const ja: Translations = {
 	},
 	terms: {
 		title: '利用規約',
-		lastUpdated: '最終更新日：[DATE_PLACEHOLDER]',
+		lastUpdated: '最終更新日：2026年3月7日',
 		sections: [
 			{
 				title: '第1条（適用および同意）',
@@ -321,7 +321,7 @@ const ja: Translations = {
 	},
 	privacy: {
 		title: 'プライバシーポリシー',
-		lastUpdated: '最終更新日：[DATE_PLACEHOLDER]',
+		lastUpdated: '最終更新日：2026年3月7日',
 		sections: [
 			{
 				title: '1. 適用範囲',
