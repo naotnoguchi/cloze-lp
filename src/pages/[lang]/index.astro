@@ -13,6 +13,11 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params as { lang: Lang };
 const t = getTranslations(lang);
+const appStoreUrl = 'https://apps.apple.com/us/app/cloze-closet-manager-log/id6759473364';
+const iosPlatform = 'iOS / iPadOS';
+const androidPlatform = 'Android';
+const iosStatus = lang === 'ja' ? 'App Store 公開中' : 'Now on the App Store';
+const androidStatus = lang === 'ja' ? '近日公開' : 'Coming soon';
 const concepts = [
 	{ title: t.home.concept1, detail: t.home.concept1Detail },
 	{ title: t.home.concept2, detail: t.home.concept2Detail },
@@ -41,9 +46,15 @@ const useCases = [
 				<h1 class="app-name">{t.home.title}</h1>
 				<p class="tagline">{t.home.tagline}</p>
 				<p class="lead">{t.home.description}</p>
-				<div class="hero-actions">
-					<span class="chip chip-live">{t.home.ctaSoon}</span>
-					<span class="chip">{t.home.platformTitle}</span>
+				<div class="hero-actions" aria-label="Platform status">
+					<a class="hero-release is-live" href={appStoreUrl} target="_blank" rel="noopener noreferrer">
+						<strong class="platform-name">{iosPlatform}</strong>
+						<span class="platform-note">{iosStatus}</span>
+					</a>
+					<div class="hero-release is-soon">
+						<strong class="platform-name">{androidPlatform}</strong>
+						<span class="platform-note">{androidStatus}</span>
+					</div>
 				</div>
 			</div>
 			<div class="hero-panel" aria-hidden="true">
@@ -109,14 +120,16 @@ const useCases = [
 		</section>
 
 		<section class="cta">
-			<div>
-				<p class="cta-soon">{t.home.ctaSoon}</p>
-				<p class="cta-label">{t.home.cta}</p>
+			<div class="release-grid" aria-label="Release status">
+				<a class="hero-release release-card is-live" href={appStoreUrl} target="_blank" rel="noopener noreferrer">
+					<strong class="platform-name">{iosPlatform}</strong>
+					<span class="platform-note">{iosStatus}</span>
+				</a>
+				<div class="hero-release release-card is-soon">
+					<strong class="platform-name">{androidPlatform}</strong>
+					<span class="platform-note">{androidStatus}</span>
+				</div>
 			</div>
-			<p class="cta-platform">
-				<strong>{t.home.platformTitle}</strong>
-				<span>{t.home.platformDesc}</span>
-			</p>
 		</section>
 	</article>
 </Layout>
@@ -202,21 +215,41 @@ const useCases = [
 		margin: 0 0 1rem;
 	}
 	.hero-actions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.65rem;
 	}
-	.chip {
-		padding: 0.36rem 0.75rem;
-		border-radius: 999px;
-		background: #e2ecef;
-		font-size: 0.8rem;
+	.hero-release {
+		display: grid;
+		gap: 0.2rem;
+		padding: 0.68rem 0.72rem;
+		border-radius: 12px;
+		text-decoration: none;
+		border: 1px solid var(--line);
+		background: linear-gradient(180deg, #ffffff, #f6fbfc);
+		color: #25414f;
+		box-shadow: 0 6px 16px rgba(28, 52, 65, 0.06);
+	}
+	.hero-release .platform-name {
+		font-size: 0.94rem;
 		font-weight: 600;
-		color: #315261;
+		letter-spacing: -0.01em;
 	}
-	.chip-live {
-		background: linear-gradient(90deg, var(--accent), var(--accent-2));
-		color: #fff;
+	.hero-release .platform-note {
+		font-size: 0.78rem;
+		color: #4f6976;
+	}
+	.hero-release.is-live {
+		border-color: #acd6d4;
+		background: linear-gradient(180deg, #effbfb, #ffffff);
+	}
+	.hero-release.is-live:hover {
+		background: linear-gradient(180deg, #e7f8f8, #ffffff);
+	}
+	.hero-release.is-soon {
+		border-style: solid;
+		background: linear-gradient(180deg, #f8fbfc, #ffffff);
+		opacity: 0.9;
 	}
 	.hero-panel {
 		display: grid;
@@ -369,46 +402,73 @@ const useCases = [
 		display: block;
 	}
 	.cta {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 1rem;
+		display: grid;
+		gap: 0;
 		padding: 1.15rem 1.2rem;
-		background: linear-gradient(130deg, #0f7f7a, #189594);
+		background: linear-gradient(180deg, #f9fcfc, #f1f7f8);
+		border: 1px solid #b8d4d8;
+		border-left: 4px solid var(--accent);
 		border-radius: 18px;
 		margin-top: 1.6rem;
-		color: #fff;
-		box-shadow: 0 14px 34px rgba(11, 122, 117, 0.28);
+		color: var(--text);
+		box-shadow: 0 8px 24px rgba(22, 40, 52, 0.08);
 		animation: reveal 1s ease-out both;
 	}
-	.cta-soon {
-		font-weight: 600;
-		font-size: 0.85rem;
-		opacity: 0.84;
-		margin: 0 0 0.18rem;
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-	}
-	.cta-label {
-		margin: 0;
-		font-size: 1.05rem;
-		font-weight: 700;
-		line-height: 1.3;
-	}
-	.cta-platform {
-		margin: 0;
+	.release-grid {
 		display: grid;
-		gap: 0.2rem;
-		text-align: right;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.65rem;
 	}
-	.cta-platform strong {
-		font-size: 0.92rem;
-		font-weight: 700;
+	.release-card {
+		position: relative;
+		overflow: hidden;
+		margin: 0;
+		padding: 0.9rem 0.95rem;
+		border-radius: 14px;
+		border: 1px solid #cfdde2;
+		background: #ffffff;
+		color: #1f3642;
+		box-shadow: none;
+		transition: background 180ms ease, transform 180ms ease, border-color 180ms ease;
 	}
-	.cta-platform span {
-		font-size: 0.78rem;
-		opacity: 0.9;
-		max-width: 28ch;
+	.release-card::after {
+		content: '';
+		position: absolute;
+		inset: auto -36px -36px auto;
+		width: 110px;
+		height: 110px;
+		background: radial-gradient(circle, rgba(16, 131, 126, 0.14), rgba(16, 131, 126, 0));
+		pointer-events: none;
+	}
+	.release-card.is-live {
+		border-color: #8ec6c5;
+		background: linear-gradient(170deg, #f7fdfd, #edf8f8);
+	}
+	.release-card.is-live .platform-name {
+		color: #0f6663;
+	}
+	.release-card.is-live .platform-note {
+		color: #1f7f7b;
+		font-weight: 600;
+	}
+	.release-card.is-live:hover {
+		background: linear-gradient(170deg, #edf9f8, #e3f3f3);
+		border-color: #6db0ae;
+		transform: translateY(-1px);
+	}
+	.release-card.is-soon {
+		background: #f6fafb;
+		border-style: solid;
+		border-color: #d8e3e7;
+	}
+	.release-card.is-soon .platform-name {
+		color: #385362;
+	}
+	.release-card.is-soon .platform-note {
+		color: #6a808d;
+	}
+	.release-card.is-soon .release-action {
+		opacity: 0.85;
 	}
 	@keyframes reveal {
 		from {
@@ -435,12 +495,11 @@ const useCases = [
 		.feature-grid {
 			grid-template-columns: 1fr;
 		}
-		.cta {
-			flex-direction: column;
-			align-items: flex-start;
+		.hero-actions {
+			grid-template-columns: 1fr;
 		}
-		.cta-platform {
-			text-align: left;
+		.release-grid {
+			grid-template-columns: 1fr;
 		}
 	}
 	@media (max-width: 560px) {

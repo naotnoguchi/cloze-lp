@@ -67,7 +67,7 @@ const en: Translations = {
 		title: 'CLOZE',
 		tagline: 'Your personal closet, organized.',
 		description:
-			'An iOS app to manage your wardrobe with photos—track outfits, maintenance history, and more. Switch between multiple "owners" and manage the whole family\'s clothes in one place.',
+			'Now available on the App Store. CLOZE is an iOS app to manage your wardrobe with photos—track outfits, maintenance history, and more. Switch between multiple "owners" and manage the whole family\'s clothes in one place.',
 		conceptTitle: 'Concept',
 		concept1: 'See what you don\'t wear anymore',
 		concept1Detail:
@@ -102,9 +102,9 @@ const en: Translations = {
 		useCase4Detail: 'Look back at outfits on a calendar and check wear patterns.',
 		platformTitle: 'Platform',
 		platformDesc:
-			'iOS / iPadOS native app built with SwiftUI. Data is stored on your device and may sync privately across your devices via iCloud under the same Apple ID.',
-		cta: 'Download on the App Store',
-		ctaSoon: 'Coming soon',
+			'iOS / iPadOS native app built with SwiftUI. Android version is coming soon. Data is stored on your device and may sync privately across your devices via iCloud under the same Apple ID.',
+		cta: 'View on the App Store',
+		ctaSoon: 'Android version coming soon',
 	},
 	terms: {
 		title: 'Terms of Use',
@@ -230,7 +230,7 @@ const ja: Translations = {
 		title: 'CLOZE',
 		tagline: 'パーソナルクローゼットを、もっとシンプルに。',
 		description:
-			'写真でクローゼットを管理し、コーディネートやメンテナンス履歴まで一括で記録できる iOS アプリです。複数の「持ち主」を切り替えて、家族全員の服を一元管理できます。',
+			'App Store で公開中。写真でクローゼットを管理し、コーディネートやメンテナンス履歴まで一括で記録できる iOS アプリです。複数の「持ち主」を切り替えて、家族全員の服を一元管理できます。',
 		conceptTitle: 'コンセプト',
 		concept1: '「なんとなく着なくなった服」を可視化',
 		concept1Detail:
@@ -265,9 +265,9 @@ const ja: Translations = {
 		useCase4Detail: '日々のコーデをカレンダーで振り返り、「着回しの偏り」をチェック。',
 		platformTitle: '対応プラットフォーム',
 		platformDesc:
-			'iOS / iPadOS ネイティブアプリ（SwiftUI）。データは端末内に保存され、同一Apple IDのiCloud間で非公開同期される場合があります。',
-		cta: 'App Store でダウンロード',
-		ctaSoon: '近日公開',
+			'iOS / iPadOS ネイティブアプリ（SwiftUI）。Android 版は近日公開予定です。データは端末内に保存され、同一Apple IDのiCloud間で非公開同期される場合があります。',
+		cta: 'App Store で見る',
+		ctaSoon: 'Android版 近日公開',
 	},
 	terms: {
 		title: '利用規約',
